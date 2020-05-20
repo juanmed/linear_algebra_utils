@@ -47,4 +47,11 @@ inline Eigen::Vector3d matrixToEulerZYX(const Eigen::Matrix3d R)
   euler_angles << roll, pitch, yaw;
   return euler_angles;
 }
+
+inline Eigen::Matrix3d rotationMatrixDerivative(const Eigen::Matrix3d R,
+	const Eigen::Vector3d angular_velocity)
+{
+	return R * hat(angular_velocity);
+}
+
 #endif /* LINALG_UTILS_V12020_H */
